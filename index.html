@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="./main.css" rel="stylesheet"/>
+    <script
+        src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
+</head>
+<body>
+<!--자바스크립트 공부를 따로 하고 있는데 마침 jQuery부분에서 배웠던거 나와서 
+    최대한 기초 위주로 기능구현 해보았습니다!-->
+<h2>문제1</h2>
+<input class="practice1" placeholder="숫자를 입력해주세요!">
+<button class="btn" data-type="num">전송</button>
+<div class="show"></div>
+
+<h2>문제2</h2>
+<input class="practice1" placeholder="레포트 점수 입력해주세요!">
+<button class="btn" data-type="score">전송</button>
+<div class="show"></div>
+
+<h2>문제3</h2>
+<div class="skills">
+<label><input type="checkbox" name="Javascript" value="language" class="check1"> 자바스크립트</label>
+<label><input type="checkbox" name="React" value="language" class="check2"> 리액트</label><br>
+<label><input type="checkbox" name="HTML" value="language" class="check3"> HTML</label>
+<label><input type="checkbox" name="CSS" value="language"class="check4"> CSS</label>
+</div>
+<button class="btn" data-type="skill">전송</button>
+<div class="show"></div>
+
+<script>
+    //문제 1.
+    function checkNum(num){
+        let message = "";
+        if(num>0){
+            message = '양수입니다!';
+            $('.show').css('color','blue');
+        }else if(num<0){
+            message = '음수입니다!';
+            $('.show').css('color','red');
+        }else if(num==0){
+            message = '0입니다!';
+            $('.show').css('color','green');
+        }else{
+            message = '숫자만 입력해주세요!';
+            $('.show').css('color','gray');
+        }
+        $('.show').eq(0).text(message);
+    }
+    //문제 2.
+    function checkScore(score){
+        let message = "";
+        if(score>=90){
+            message="A입니다!";
+        }else if(score>=80){
+            message="B입니다!";
+        }else if(score>=70){
+            message="C입니다!";
+        }else if(score>=60){
+            message="D입니다!";
+        }else{
+            message="아쉽게도 F...";
+        }
+        $('.show').eq(1).text(message);
+    }
+     //문제3.
+    let skills = ["HTML","CSS","Javascript","React"];
+    function checkSkills(){
+        let message = "";
+        if($('.check1').is(':checked') && $('.check2').is(':checked')){
+            message = "합격!";
+        }else if($('.check1').is(':checked') || $('.check2').is(':checked')){
+            message= "예비!";
+        }else{
+            message="탈락!";
+        }
+        $('.show').eq(2).text(message);
+    }
+    $('.btn').on('click',function(){
+        let type = $(this).data('type');
+        $('.show').hide();
+        if(type==='num'){
+            let num = $('.practice1').eq(0).val();
+            checkNum(num);
+            $('.show').eq(0).show();
+        }else if(type==='score'){
+            let score = $('.practice1').eq(1).val();
+            checkScore(score);
+            $('.show').eq(1).show();
+        }else if(type==='skill'){
+            checkSkills();
+            $('.show').eq(2).show();
+        }
+    })
+</script>
+    
+</body>
+</html>

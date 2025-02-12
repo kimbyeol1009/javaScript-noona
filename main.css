@@ -1,0 +1,15 @@
+.practice1{
+    padding : 5px;
+    color : rgb(83, 83, 83);
+    font-size: 16px;
+}
+button{
+    padding : 8px 15px;
+    color : white;
+    background-color: rgb(14, 56, 114);
+    border : none;
+    border-radius: 10px;
+}
+.show{
+   margin : 10px 0px;
+}
